@@ -1,30 +1,38 @@
 #!/bin/bash
+
+#### Colours #####
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 YELLOW=$(tput setaf 3)
 CYAN=$(tput setaf 6)
 NORMAL=$(tput sgr0)
+BOLD=$(tput bold)
 
-ACCOUNT_NO=
-### USERNAMES KEYS ###
+#### USERNAMES KEYS ####
 PRIMARY_USERNAME=vtw-dev
 PRIMARY_PRIVATE_KEY_NAME=ksaittis.pem
+DEFAULT_NAME_TAG_NON_PROD=devnp
+
 BACKUP_USERNAME=ec2-user
 BACKUP_KEY_NAME=bdang.pem
-### CLOBAL ARRAYS ###
+DEFAULT_NAME_TAG_PROD=prod
+
+#### CLOBAL VARS ####
+ACCOUNT_NO=
 INSTANCES=()
 WARS=()
 WAR_VERSIONS=()
 ####################
 
+#can be used for debugging
 # set -x
 
-makeline()
+makeline() #optional arg $1 changes the character used to fill the line
 {
     printf "%$(( $(tput cols) ))s" " " | tr " " ${1:-=}
 }
 
-centerPrint()
+centerPrint() #prints the string prvide to the center of terminal
 {
     parameters=$*
     string_length=${#parameters}
@@ -32,12 +40,12 @@ centerPrint()
     printf "%*s\n" $pos "$parameters"
 }
 
-describe-instances()
+describe-instances()  #creates a list of all instances with their ips
 {
 aws ec2 describe-instances --filters 'Name=tag:Name,Values='"*${NAME_TAG}*" 'Name=instance-state-code,Values=16' --region eu-west-1 --query 'Reservations[].Instances[].[[Tags[?Key==`Name`].Value][0][0],PrivateIpAddress]' --output table
 }
 
-convert_lines_to_array()
+convert_lines_to_array() #creates an array out of multiline object
 {
     OLD_IFS="$IFS"
     IFS='
@@ -47,7 +55,7 @@ convert_lines_to_array()
     IFS="$OLD_IFS"
 }
 
-identify_account()
+identify_account() #identifies which account we are pointing to and set correct credentials
 {
 	ACCOUNT_NO=$(aws sts get-caller-identity --output text --query 'Account')
 	echo $ACCOUNT_NO
@@ -62,13 +70,13 @@ identify_account()
 	fi
 }
 
-get_array_of_aws_instances()
+get_array_of_aws_instances() #calls describe-instances to get list of instances and then converts it to an array
 {
     SORTED_TABLE=$( describe-instances  | sed '1d; 2d; /vtw-apollo-pdf-asg-devnp/d' | sort -n )
     convert_lines_to_array "${SORTED_TABLE}"
 }
 
-display_instances(){
+display_instances(){ #displays the array of instances
     num_rows=${#INSTANCES[@]}
     if [ $num_rows = 0 ]; then
     	printf ${YELLOW}"Your search did not return any servers: %s\n"${NORMAL} "${NAME_TAG}"
@@ -99,7 +107,7 @@ getWARS()
 	done
 }
 
-getVersion()
+getVersion() #gets the war versions
 {
 	 WAR_VERSION=$(sudo cat $(sudo find /usr/share/tomcat[7-8]/webapps/"$1"/ -type f -name 'pom.xml') | sed -e '/<parent>/,/<\/parent>/{//!d}' -e '/<dependencies>/,/<\/project>/{//!d}' | grep -m1 '</version>')
         if [[ -z "${WAR_VERSION}"  ]]; then
@@ -108,7 +116,7 @@ getVersion()
         echo $WAR_VERSION
 }
 
-display_wars_versions()
+display_wars_versions() #displays the war versions found on that intance
 {
 	echo
     WARS=( $(ssh -o StrictHostKeyChecking=no -i ~/.ssh/${KEY} ${USERNAME}@${instance_ip//[[:space:]]/} 2> /dev/null "$(typeset -f); getWARS") )
@@ -124,7 +132,7 @@ display_wars_versions()
 }
 
 
-check_tomcat_status()
+check_tomcat_status() #executes tomcats status check through ssh and returns result
 {
     TOMCAT_STATUS=$(ssh -o StrictHostKeyChecking=no -i ~/.ssh/${KEY} ${USERNAME}@${instance_ip//[[:space:]]/} 2> /dev/null 'TOMCAT_VERSION=$(ls /etc/init.d | grep tomcat[6-9] ); TOMCAT_STATUS=$(sudo service ${TOMCAT_VERSION} status); echo $TOMCAT_STATUS')
 
@@ -140,7 +148,7 @@ check_tomcat_status()
 }
 
 
-check_service_status()
+check_service_status() #executes status check through ssh and returns result
 {
     SERVICE_STATUS=$(ssh -o StrictHostKeyChecking=no -i ~/.ssh/${KEY} ${USERNAME}@${instance_ip//[[:space:]]/} 2> /dev/null 'SERVICE_STATUS=$(sudo service '"${sshcommand}"' status); echo $SERVICE_STATUS')
     printf '        %s:\t%s' $instance_name "$SERVICE_STATUS"
@@ -158,21 +166,20 @@ execute_ssh_command()
 }
 
 
-clean_ssh_command()
+clean_ssh_command()     #Removing double quotes from variable so it can be used as command
 {
-    #Removing double quotes from variable so it can be used as command
     sshcommand="${sshcommand%\"}"
     sshcommand="${sshcommand#\"}"
 }
 
-display_unsuccessful_login_msg()
+display_unsuccessful_login_msg() #display Unsuccessful login message
 {
     makeline \#
     centerPrint ${YELLOW}"Unsuccessful login attemp to $instance_name in $ACCOUNT account."
-    centerPrint "USERNAME: $USERNAME and KEY: $KEY did not work."${NORMAL}
+    centerPrint ${BOLD}"USERNAME: ${USERNAME} and KEY: ${KEY} did not work."${NORMAL}
     makeline -
     centerPrint ${CYAN}"POSSIBLE SCENARIOS"
-    centerPrint "Security groups on $instance_name are not configured to allow you access."
+    centerPrint "Security groups on $instance_name do not allow access to your ip."
     centerPrint "Key used is not in the .ssh/authorisedKeys on the specific instance."
     centerPrint "You are trying to connect to a windows box."${NORMAL}
     makeline \#
@@ -200,13 +207,13 @@ identify_arguments_passed() #unreadable code
         i=1
         for arg in $@; do
             if [[ $arg =~ ^-[p|np] ]]; then #identify which positional parameter is related to account
-                account_option=$arg
+                account_arg=$arg
                 if [[ $i == 1 ]]; then #identify which positional parameter is related to NAME_TAG
                     NAME_TAG=$2
                 else
                     NAME_TAG=$1
                 fi
-                if [[ $account_option == -p ]]; then
+                if [[ $account_arg == -p ]]; then
                     . change-aws.sh prod
                 else
                     . change-aws.sh nonprod
@@ -218,13 +225,13 @@ identify_arguments_passed() #unreadable code
     elif [[ $# -eq 1 ]]; then #if one argument was passed
         if [[ $1 =~ ^-[p|np] ]]; then #identify if the positional parameter is related to account
             # source ./change-aws.sh
-            account_option=$1
-            if [[ $account_option == -p ]]; then
+            account_arg=$1
+            if [[ $account_arg == -p ]]; then
                 . change-aws.sh prod
-                NAME_TAG=prod
+                NAME_TAG=$DEFAULT_NAME_TAG_PROD
             else
                 . change-aws.sh nonprod
-                NAME_TAG=devnp
+                NAME_TAG=$DEFAULT_NAME_TAG_NON_PROD
             fi
             get_array_of_aws_instances
         elif [[ $1 =~ ^--help ]]; then
@@ -235,9 +242,9 @@ identify_arguments_passed() #unreadable code
         fi
     elif [[ $# -eq 0 ]]; then
         if [[ $ACCOUNT == "Non Production" ]]; then
-            NAME_TAG=devnp
+            NAME_TAG=$DEFAULT_NAME_TAG_NON_PROD
         else
-            NAME_TAG=prod
+            NAME_TAG=$DEFAULT_NAME_TAG_PROD
         fi
         get_array_of_aws_instances
     else
@@ -276,27 +283,28 @@ connect_to()
 
 display_help_msg()
 {
-cat << EOF
-Usage:  qssh [NAME_TAG] [ACCOUNT]
-   or:  qssh [NAME_TAG]
-   or:  qssh [HELP]
-Prints a list of servers that match the *NAME_TAG* you provide and allows
-easy access to them. You can specify the account in which the search is
-going to be by providing the argument -p for production account and
--np for non production account. If you don\'t provide an account arg then it
-makes the search on the account that your default credentials in your .aws dir
-are pointing to.
+    cat << EOF
+    Usage:  qssh [NAME_TAG] [ACCOUNT]
+       or:  qssh [ACCOUNT] [NAME_TAG]
+       or:  qssh [NAME_TAG]
+       or:  qssh [HELP]
+    Prints a list of servers that match the *NAME_TAG* you provide and allows
+    easy access to them. You can specify the account in which the search is
+    going to be by providing the argument -p for production account and
+    -np for non production account. If you don\'t provide an account arg then it
+    makes the search on the account that your default credentials in your .aws dir
+    are pointing to.
 
-The options below may be used to select which server name tag to search for
-and in which account to search for.
-[NAME_TAG]
-  NAME_TAG, server name tag to search for
-[ACCOUNT]
-  -p, production account
-  -np, non production
-[HELP]
-  --help, display this help and exit
-EOF
+    The options below may be used to select which server name tag to search for
+    and in which account to search for.
+    [NAME_TAG]
+      NAME_TAG, server name tag to search for
+    [ACCOUNT]
+      -p, production account
+      -np, non production
+    [HELP]
+      --help, display this help and exit
+    EOF
 
 kill -INT $$
 }
@@ -309,6 +317,3 @@ __main__()
 }
 
 __main__ $@
-
-   
-   
