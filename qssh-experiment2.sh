@@ -99,7 +99,7 @@ display_instances(){ #displays the array of instances
 
 }
 
-getWARS()
+getWARS() #creating a list of the exploded wars on the instance
 {
 	EXPLODED_WARS=( $(ls -d /usr/share/tomcat[6-9]/webapps/*/ | xargs -n1 basename) )
 	for i in ${EXPLODED_WARS[@]}; do
@@ -185,9 +185,8 @@ display_unsuccessful_login_msg() #display Unsuccessful login message
     makeline \#
 }
 
-check_ssh_command()
+check_ssh_command() #checking number of words passed as a second argument
 {
-	#checking number of words passed as a second argument
 	if [[ $(echo "$sshcommand" | wc -w ) -gt 1 ]]; then #if we typed multiple words
         execute_ssh_command
     #Only one word in sshcommand
@@ -201,7 +200,7 @@ check_ssh_command()
 }
 
 
-identify_arguments_passed() #unreadable code
+identify_arguments_passed() #identifies and handles the arguments passed to the script
 { #parameters must not be passed in the correct order
     if [[ $# -eq 2 ]]; then #check number of positional parameters passed
         i=1
@@ -234,9 +233,9 @@ identify_arguments_passed() #unreadable code
                 NAME_TAG=$DEFAULT_NAME_TAG_NON_PROD
             fi
             get_array_of_aws_instances
-        elif [[ $1 =~ ^--help ]]; then
+        elif [[ $1 =~ ^--help ]]; then #displaying help if arg is --help
             display_help_msg
-        else
+        else #if only one argument passed and it's not -p or -np then it should be a name_tag
             NAME_TAG="${1}"
             get_array_of_aws_instances
         fi
@@ -288,7 +287,7 @@ display_help_msg()
        or:  qssh [ACCOUNT] [NAME_TAG]
        or:  qssh [NAME_TAG]
        or:  qssh [HELP]
-    Prints a list of servers that match the *NAME_TAG* you provide and allows
+    Prints a list of servers that match the *NAME_TAG* you provided and allows
     easy access to them. You can specify the account in which the search is
     going to be by providing the argument -p for production account and
     -np for non production account. If you don\'t provide an account arg then it
@@ -309,11 +308,11 @@ display_help_msg()
 kill -INT $$
 }
 
-__main__()
+main()
 {
     identify_arguments_passed $@
     display_instances
     connect_to
 }
 
-__main__ $@
+main $@
