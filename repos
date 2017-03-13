@@ -1,0 +1,7 @@
+vtw_repos=("repo1"
+"repo2"
+"repo3")
+
+auto_repos=("auto1"
+"auto2"
+"auto3")

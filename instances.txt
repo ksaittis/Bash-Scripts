@@ -1,0 +1,47 @@
+----------------------------------------------------------
+|                    DescribeInstances                   |
++-------------------------------------+------------------+
+|  vtw-common-es-data-devnp-3         |  10.183.210.84   |
+|  vtw-ps-asg-devnp                   |  10.183.210.163  |
+|  vtw-kibana-devnp                   |  10.183.210.23   |
+|  vtw-gis-asg-devnp                  |  10.183.210.245  |
+|  mongodb-devnp-cfg-n1               |  10.183.210.95   |
+|  vtw-common-es-master-devnp-2       |  10.183.210.75   |
+|  mongodb-devnp-s1-n3-data           |  10.183.210.91   |
+|  vtw-common-es-master-devnp-1       |  10.183.210.42   |
+|  vtw-apollo-bpm-proxy-asg-devnp     |  10.183.210.141  |
+|  vtw-content-asg-devnp              |  10.183.210.206  |
+|  mongodb-devnp-cfg-n2               |  10.183.210.11   |
+|  devnp-test-archive-asg             |  10.183.210.25   |
+|  vtw-oa-asg-devnp                   |  10.183.210.147  |
+|  mongodb-monitoring-agent-devnp     |  10.183.210.37   |
+|  vtw-common-es-1-3-6-data-devnp-1   |  10.183.210.90   |
+|  vtw-common-es-1-3-6-data-devnp-2   |  10.183.210.43   |
+|  vtw-common-es-data-devnp-2         |  10.183.210.55   |
+|  mongodb-devnp-s1-n2-data           |  10.183.210.8    |
+|  vtw-httpd-asg-devnp                |  10.183.210.133  |
+|  vtw-common-es-data-devnp-1         |  10.183.210.21   |
+|  vtw-kibana-for-1-3-6-devnp         |  10.183.210.32   |
+|  mongodb-devnp-cfg-n3               |  10.183.210.68   |
+|  vtw-common-es-1-3-6-master-devnp-2 |  10.183.210.85   |
+|  vtw-lov-asg-devnp                  |  10.183.210.120  |
+|  vtw-apollo-cpc-proxy-asg-devnp     |  10.183.210.116  |
+|  vtw-sms-api-asg-devnp              |  10.183.210.187  |
+|  vtw-apollo-dashboard-asg-devnp     |  10.183.210.179  |
+|  vtw-pmc-asg-devnp                  |  10.183.211.19   |
+|  vtw-goa-asg-devnp                  |  10.183.211.15   |
+|  vtw-apollo-skipmgmt-asg-devnp      |  10.183.210.238  |
+|  vtw-router-asg-devnp               |  10.183.211.5    |
+|  vtw-etl-asg-devnp                  |  10.183.210.47   |
+|  vtw-ef-api-asg-devnp               |  10.183.210.5    |
+|  vtw-backup-service-asg-devnp       |  10.183.210.44   |
+|  vtw-common-es-1-3-6-master-devnp-1 |  10.183.210.57   |
+|  vtw-patents-asg-devnp              |  10.183.210.60   |
+|  vtw-sr-proxy-asg-devnp             |  10.183.210.172  |
+|  mongodb-devnp-s1-n1-data           |  10.183.210.101  |
+|  vtw-dispatcher-asg-devnp           |  10.183.210.143  |
+|  vtw-apollo-pdf-asg-devnp           |  10.183.210.158  |
+|  vtw-common-es-1-3-6-data-devnp-3   |  10.183.210.22   |
+|  vtw-core-asg-devnp                 |  10.183.210.35   |
+|  vtw-vtool-asg-devnp                |  10.183.210.73   |
++-------------------------------------+------------------+

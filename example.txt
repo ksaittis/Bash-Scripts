@@ -1,0 +1,9 @@
+| devnp-ddda | 10.183.12.11 |
+| devnp-dddb | 10.183.12.12 |
+| devnp-dddc | 10.183.12.13 |
+| devnp-dddd | 10.183.12.14 |
+| devnp-ddde | 10.183.12.15 |
+| devnp-dddf | 10.183.12.16 |
+| devnp-dddg | 10.183.12.17 |
+| devnp-dddh | 10.183.12.18 |
+| devnp-dddj | 10.183.12.19 |

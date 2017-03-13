@@ -1,0 +1,270 @@
+1. var1=${STR%-*}
+	${STR%-*} deletes the shortest substring of $STR that matches the pattern -* starting from the end of the string.
+
+2. var2=${STR#*-}
+	${STR#*-} does the same, but with the *- pattern and starting from the beginning of the string.
+
+3. Use set -o nounset (a.k.a. set -u) to exit when your script tries to use undeclared variables.
+
+4. Use set -o errexit (a.k.a. set -e) to make your script exit when a command fails
+
+5. Use set -o xtrace (a.k.a set -x) to trace what gets executed. Useful for debugging.
+
+6. Use set -o pipefail in scripts to catch mysqldump fails in e.g. mysqldump |gzip. The exit status of the last command that threw a non-zero exit code is returned.
+
+7. #!/usr/bin/env bash is more portable than #!/bin/bash.
+
+8. Surround your variables with {}. Otherwise bash will try to access the $ENVIRONMENT_app variable in /srv/$ENVIRONMENT_app, whereas you probably
+	intended /srv/${ENVIRONMENT}_app.
+
+9. You don't need two equal signs when checking if [ "${NAME}" = "Kevin" ].
+
+10. Use :- if you want to test variables that could be undeclared. For instance: if [ "${NAME:-}" = "Kevin" ] will set $NAME to be empty if it's not declared.
+	You can also set it to noname like so if [ "${NAME:-noname}" = "Kevin" ]
+
+11. Set magic variables for current file, basename, and directory at the top of your script for convenience.
+
+12. Use here documents for multi line strings passed
+	cat << EOF > newFile.txt
+	This is a
+	multiline string.
+	Just to check heredocuments
+	EOF
+
+13. String comparisons
+	s1 = s2
+
+	s1 != s2
+
+	-n s1, s1 is not null (contains one or more characters)
+
+	-z s1, s1 is null
+
+	if [ $S1=$S2 ]; then
+        echo "S1('$S1') is not equal to S2('$S2')"
+    fi
+
+14. Arithmetic comparisons
+	-lt (<)
+
+	-gt (>)
+
+	-le (<=)
+
+	-ge (>=)
+
+	-eq (==)
+
+	-ne (!=)
+
+15. ${parameter:-word}
+    If parameter is unset or null, the expansion of word is substituted.
+    Otherwise, the value of parameter is substituted.
+
+16. Every command returns an exit status (sometimes referred to as a return status or exit code). A successful command returns a 0,
+	while an unsuccessful one returns a non-zero value that usually can be interpreted as an error code. Well-behaved UNIX commands, programs, and utilities return a 0 exit code upon successful completion, though there are some exceptions.
+
+17. echo $? displays the exit status of the previous command
+
+18. Alias: A Bash alias is essentially nothing more than a keyboard shortcut, an abbreviation, a means of avoiding typing a long command sequence.
+	If, for example, we include alias lm="ls -l | more" in the ~/.bashprofile file.
+
+19. Chaining together commands
+	and list
+	command-1 && command-2 && command-3 && ... command-n
+	(you can put them in separate lines by escaping the new line at the end of the line by using \ )
+	Each command executes in turn, provided that the previous command has given a return value of true (zero). At the first false (non-zero) return, the command chain terminates (the first command returning false is the last one to execute
+
+20. Iterating through an array
+	for i in "${arrayName[@]}"; do
+	   # do whatever on $i
+	done
+
+	Total files in array : ${#files[*]}
+
+	Using indices to iterate:
+	for i in "${!foo[@]}"; do
+	  printf "%s\t%s\n" "$i" "${foo[$i]}"
+	done
+
+21. Incrementing variables
+	var=$((var+1))
+
+	((var=var+1))
+
+	((var+=1))
+
+	((var++))
+
+22. chmod command
+	chmod is used to change the permissions of files or directories.
+	chmod u=rwx,g=rx,o=r myfile (or you can select all with a= )
+
+	4 => read
+	2 => write
+	1 => execute
+	0 => no permissions
+	chmod 754 myfile
+		  ugo user group others
+
+23. chown command
+	chown command changes the user and/or group ownership of for given file. The syntax is:
+	chown root:httpd /foo
+
+24. screen command
+	Screen is a full-screen software program that can be used to multiplexes a physical console between several processes (typically interactive shells). It offers a user to open several separate terminal instances inside a one single terminal window manager.
+
+	screen -S nameOfScreen to create screen
+	detach from screen ctr+a+d
+	list screen using screen -ls
+	screen -r attaches you to previous screen
+	screen -r screenID attaches you to screen with ID
+
+25. grep command
+	grep searches the input files for lines containing a match to a given pattern list. When it finds a match in a line, it copies the line to standard output (by default), or whatever other sort of output you have requested with options.
+	If the final byte of an input file is not a newline, grep silently supplies one. Since newline is also a separator for the list of patterns, there is no way to match newline characters in a text.
+	Regular expressions can be also used in grep
+
+	grep word file, matches word in file
+	-A n return n lines after match
+	-B n return n lines before match
+	-C n return n lines before and after match
+	-w match for exact word
+
+	regex
+	^word strings starting with the word word
+	word$ strings ending with the word word
+	[abc] strings containing any of the characters inside the square brackets
+	. any character
+	.* any character one or more times
+
+26. Iterate the directories and execute commands
+	for d in ./*/; do
+		command
+	done
+
+27. find command
+		Searching by -name
+		find -name "query"
+		-i option case insensitive
+		-not files that don't match that name
+
+		Searching by -type
+		f: regular file
+		d: directory
+		l: symbolic link
+		c: character devices
+		b: block devices
+
+		find / -type f -name "*.conf" ,start searching from root dir
+
+		Searching by -size
+		find / -size +700M, files greater than 700mb
+
+28. history command
+		The history command can be used to list Bash's log of the commands you have typed
+		Searching through the Command History ( CTRL-R )
+		history -c, clears history log
+
+29. ping command
+		The ping command is used to check if there is a network connection to another computer.
+		ping 74.125.19.147
+		-t = Using this option will ping the target until you force it to stop using Ctrl-C.
+		-a = This ping command option will resolve, if possible, the hostname of an IP address target.
+		-n count = This option sets the number of ICMP Echo Request messages to send. If you execute the ping command without this option, four requests will be sent.
+		-l size = Use this option to set the size, in bytes, of the echo request packet from 32 to 65,527. The ping command will send a 32 byte echo request if you don't use the -l option.
+		-R = This option tells the ping command to trace the round trip path.
+		-S srcaddr = Use this option to specify the source address.
+		-p = Use this switch to ping a Hyper-V Network Virtualization provider address.
+		-4 = This forces the ping command to use IPv4 only but is only necessary if target is a hostname and not an IP address.
+		-6 = This forces the ping command to use IPv6 only but as with the -4 option, is only necessary when pinging a hostname.
+
+30. nc command
+		The nc (or netcat) utility is used for just about anything under the sun involving TCP or UDP. It can open TCP connections, send UDP packets, listen on arbitrary TCP and UDP ports, do port scanning, and deal with both IPv4 and IPv6.
+		nc 127.0.0.1 1234
+
+		Data Transfer
+		Start by using nc to listen on a specific port, with output captured into a file:
+    $ nc -l 1234 > filename.out
+		Using a second machine, connect to the listening nc process, feeding it the file which is to be transferred:
+    $ nc host.example.com 1234 < filename.in
+
+		Port Scanning
+		It may be useful to know which ports are open and running services on a target machine. The -z flag can be used to tell nc to report open ports, rather than initiate a connection. For example:
+		$ nc -z host.example.com 20-30
+		Connection to host.example.com 22 port [tcp/ssh] succeeded!
+		Connection to host.example.com 25 port [tcp/smtp] succeeded!
+
+31. trap command
+		trap is a function built into the shell that responds to hardware signals and other events
+		trap -l lists all available signals
+
+32. tee command
+		Sends output of a program to a file and to standard output.
+		ls /home/user | tee my_directories.txt
+
+33. Redirection &>
+		Redirects standard output and error output to a specific location.
+		make &> /dev/null
+		Sends both error output and standard output to /dev/null so you won't see anything...
+
+34. Command Substitution
+		Command substitution is basically another way to do a pipe, you can use pipes and command substitution interchangeably, it's up to you which one you find easier...
+		Command substitution can be done in two distinct ways.
+		Back quotes and $()
+
+35. Using a C-style for loop is also fine and avoids worrying about word-splitting if you're not clear on it:
+		for (( i = 0; i < ${#FILES[@]}; i++ ))
+		do
+		  echo "${FILES[$i]}"
+		done
+
+		Using a bare ${array[@]} or ${array[*]} subjects the result of that expansion to further word-splitting, so you'll end up with words split on spaces (and anything else in $IFS) instead of one word per array element.
+
+36. Colors using tput
+		blue=$(tput setaf 4)
+		normal=$(tput sgr0)
+		printf "%40s\n" "${blue}This text is blue${normal}"
+
+37. Make sure that the Argument passed is a number
+		re='^[0-9]+$'
+		if ! [[ $yournumber =~ $re ]] ; then
+		   echo "error: Not a number" >&2; exit 1
+		fi
+
+38. print array line by line without a for loop
+		printf '* %s\n' ${arrayvars[@]}
+
+39. print a character multiple times
+		printf '=%.0s' {1..100}
+		repl() { printf "$1"'%.s' $(eval "echo {1.."$(($2))"}"); }
+
+40.To use the function in the remote host:
+		typeset -f | ssh user@host "$(cat);f"
+		To use on another remote machine:
+		typeset -f | ssh user@host2 "$(cat);f"
+		Better yet, why bother with pipe
+		ssh user@host "$(typeset -f); f"
+		Explanation.
+		typeset -f will display the functions defined within the script.
+		cat will receive the definition of the function as a text and $() will execute it in the current shell which will become a defined function in the remote shell. Finally the function can be executed.
+		The last code will put the definition of the functions inline before ssh execution
+
+41. Create an array from text
+		read -a var_name <<< $(cat text.txt)
+
+42. printing a full length line
+		COLUMN=$(tput cols)
+		printf "%${1:-COLUMNS}s" "" | tr " " ${2:-#}
+
+43. integer value of string is 0
+
+44. substitute pieces of strings using
+		a=253798
+		b=${a/37/HH} substitutes 37 of $a to HH
+
+45. highlighting text using grep
+		highlight just the match
+		$ cat test.csv | GREP_COLOR='01;34' egrep --color=always 'kostas|$'
+		highlight whole line
+		$ cat test.csv | GREP_COLOR='01;34' egrep --color=always '^.*kostas.*$|$'
