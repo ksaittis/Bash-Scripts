@@ -1,0 +1,212 @@
+<html>
+	<head>
+		<meta name="description" content="food-info">
+		<meta name="keywords" content="Food additives, E-numbers, E numbers, Food supplements, Food Safety">
+<meta http-equiv="Expires" content="Thu, 26 Jul 2001 1:00:00 GMT">
+<meta http-equiv="pragma" content="no-cache">
+		<link rel="stylesheet" type="text/css" href="http://www.food-info.net/webmaster/foodexperts.css">
+		
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+<meta http-equiv="Content-Language" content="en">
+		<title>Food-Info.net : E-numbers : E101: Riboflavin</title>		
+		
+	    <style type="text/css">
+<!--
+.style2 {font-size: 10px; color: #339933;}
+-->
+        </style>
+    <script language="JavaScript">
+//<!--
+function getLongDateString()
+{	//method defined on class Date.
+	//Returns a date string of the form: Day DD Month,YYYY
+	//(e.g. Sunday 27 September, 1998)
+	monthNames = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+dayNames = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+	dayOfWeek = this.getDay();
+	day = dayNames[dayOfWeek];
+	dateOfMonth = this.getDate();
+monthNo = this.getMonth();
+	month = monthNames[monthNo];
+year = this.getYear();
+	if (year < 2000)
+year = year + 1900;
+dateStr = day+" "+dateOfMonth+" "+month+", "+year;
+	return dateStr;
+}
+//register the  method in the class Date
+Date.prototype.getLongDateString=getLongDateString;function DocDate()
+{ //return the document modification date (excl.time)
+//as a string
+	DateTimeStr = document.lastModified;
+	secOffset = Date.parse(DateTimeStr);
+	if (secOffset == 0 || secOffset == null) //Opera3.2
+			 dateStr = "Unknown";
+	else
+	{
+		aDate = new Date();
+		aDate.setTime(secOffset);
+		//use method defined above
+		datestr = aDate.getLongDateString();
+	}
+	return dateStr;
+}
+// --></script>
+<script src="http://www.food-info.net/webmaster/dw_event.js" type="text/javascript"></script>
+<script src="http://www.food-info.net/webmaster/dw_rotator.js" type="text/javascript"></script>
+<script type="text/javascript">
+var rotator1 = {
+    path:   'http://www.food-info.net/images/',
+    id:   'r1',
+    speed:  4000, // default 4500
+    images: ["/topimages/1.gif", "/topimages/2.gif", "/topimages/3.gif", "/topimages/4.gif", "/topimages/5.gif", "/topimages/6.gif", "/topimages/7.gif", "/topimages/8.gif", "/topimages/9.gif", "/topimages/10.gif"],
+    bTrans: true // ie win filter
+}
+
+var rotator2 = {
+    path:   'http://www.food-info.net/images/',
+    id:   'r2',
+    speed:  4200, // default 4500
+    images: ["/topimages/11.gif", "/topimages/12.gif", "/topimages/13.gif", "/topimages/14.gif", "/topimages/15.gif", "/topimages/16.gif", "/topimages/17.gif", "/topimages/18.gif", "/topimages/19.gif", "/topimages/20.gif"],
+    bTrans: true // ie win filter
+}
+
+var rotator3 = {
+    path:   'http://www.food-info.net/images/',
+    id:   'r3',
+    speed:  4400, // default 4500
+    images: ["/topimages/21.gif", "/topimages/22.gif", "/topimages/23.gif", "/topimages/24.gif", "/topimages/25.gif", "/topimages/26.gif", "/topimages/27.gif", "/topimages/28.gif", "/topimages/29.gif", "/topimages/30.gif"],
+    bTrans: true // ie win filter
+}
+
+function initRotators() {
+    dw_Rotator.setup(rotator1, rotator2, rotator3);
+}
+
+dw_Event.add( window, 'load', initRotators);
+</script>
+<head>		<body>
+	<script type='text/javascript'>//HV Menu v5.411- by Ger Versluis (http://www.burmees.nl/)
+//Submitted to Dynamic Drive (http://www.dynamicdrive.com)
+//Visit http://www.dynamicdrive.com for this script and morefunction Go(){return}</script>
+<script type='text/javascript' src='http://www.food-info.net/webmaster/ukmenu.js'></script>
+<script type='text/javascript' src='http://www.food-info.net/webmaster/menu_com.js'></script>
+<noscript>Your browser does not support script</noscript>
+		</a><table border="0" cellpadding="0" cellspacing="0" width="100%" height="125">
+			<tr>
+				<td width="100%" height="95" bgcolor="#009900">
+			  <a name="top"> <table width="100%"  border="0">
+                <tr>
+                                    <td width="64%" rowspan="2"><div align="left">
+                      <table width="87%"  border="0" cellspacing="0" cellpadding="3">
+                      <tr>
+                        <td width="49%"><img src="http://www.food-info.net/images/1.gif" width="288" height="92"></td>
+                        <td width="120"><img id="r1" src="http://www.food-info.net/images/topimages/11.gif" name="rotator1" width="120" ></td>
+                        <td width="120"><img id="r2" src="http://www.food-info.net/images/topimages/1.gif" name="rotator" width="120" ></td>
+                        <td width="120"><img id="r3" src="http://www.food-info.net/images/topimages/10.gif" width="120"></td>
+                      </tr>
+                    </table> 
+                    </div></td>
+                  <td width="36%" align="right"><center>
+                    <div align="center"><a href=http://www.food-info.net/uk/index.htm><img src=http://www.food-info.net/images/gb.gif border=0></a> <a href=http://www.food-info.net/nl/index.htm><img src=http://www.food-info.net/images/nl.gif border=0></a> <a href=http://www.food-info.net/de/index.htm><img src=http://www.food-info.net/images/de.gif border=0></a> <a href=http://www.food-info.net/fr/index.htm><img src=http://www.food-info.net/images/fr.gif border=0></a> <a href=http://www.food-info.net/tr/index.htm><img src=http://www.food-info.net/images/tr.gif border=0></a>                       <a href=http://www.food-info.net/gr/index.htm><img src=http://www.food-info.net/images/gr.gif border=0></a> <a href=http://www.food-info.net/es/index.htm><img src=http://www.food-info.net/images/es.gif border=0></a> <a href=http://www.food-info.net/pt/index.htm><img src=http://www.food-info.net/images/pt.gif border=0></a> 
+                        <a href=http://www.food-info.net/si/index.htm><img src=http://www.food-info.net/images/si.gif border=0></a> <a href=http://www.food-info.net/sk/index.htm><img src=http://www.food-info.net/images/sk.gif border=0></a> <a href=http://www.food-info.net/ro/index.htm><br>
+                        </a> <a href="http://www.food-info.net/pl/index.htm"><img src=http://www.food-info.net/images/pl.gif border=0></a> <a href=http://www.food-info.net/id/index.htm><img src=http://www.food-info.net/images/id.gif border=0></a> <a href=http://www.food-info.net/ro/index.htm><img src=http://www.food-info.net/images/ro.gif border=0></a> <a href=http://www.food-info.net/hu/index.htm><img src=http://www.food-info.net/images/hu.gif border=0></a> <a href=http://www.food-info.net/it/index.htm><img src=http://www.food-info.net/images/it.gif border=0></a> <a href=http://www.food-info.net/lt/index.htm><img src=http://www.food-info.net/images/lt.gif border=0></a> <a href=http://www.food-info.net/cz/index.htm><img src=http://www.food-info.net/images/cz.gif border=0></a> <a href=http://www.food-info.net/cn/index.htm><img src=http://www.food-info.net/images/cn.gif border=0></a>  <a href="http://www.food-info.net/se/index.htm"><img src=http://www.food-info.net/images/se.gif border=0></a>  <a href=http://www.food-info.net/fi/index.htm><img src=http://www.food-info.net/images/fi.gif border=0></a>  <br>                      
+                        <a href="http://www.food-info.net/am/index.htm"><img src=http://www.food-info.net/images/am.gif border=0></a> <a href="http://www.food-info.net/ua/index.htm"><img src=http://www.food-info.net/images/ua.gif border=0></a> <a href="http://www.food-info.net/hr/index.htm"><img src=http://www.food-info.net/images/hr.gif border=0></a>  <a href="http://www.food-info.net/ar/index.htm"><img src=http://www.food-info.net/images/sa.gif border=0></a> <a href="http://www.food-info.net/ru/index.htm"><img src=http://www.food-info.net/images/ru.gif border=0></a> 
+                          <a href=http://www.food-info.net/no/index.htm><img src=http://www.food-info.net/images/no.gif border=0></a>  <a href=http://www.food-info.net/sr/index.htm><img src=http://www.food-info.net/images/yu.gif border=0></a> <a href=http://www.food-info.net/vn/index.htm><img src=http://www.food-info.net/images/vn.gif border=0></a> </div>
+                  </center>                    </div></td>
+                </tr>
+                <tr>
+                  <td width="36%" height="47" align="right">
+<form action="http://www.google.com/cse" id="cse-search-box" target="_blank">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-4879287902307022:t998k0vvjnl" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form><script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>              </table></td>
+			</tr>
+			<tr>
+				<td bgcolor="black" height="30" width="100%">&nbsp;</td>
+			</tr>
+		</table>
+		<table class="color" width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>				<td width="110" valign="top" bgcolor="#009900">
+<p><br>
+<br><center><a href="http://www.food-info.net/new.htm"><img src=http://www.food-info.net/images/button-new.jpg border="0"></a></center><br><center><a href="http://www.food-info.net/poster.htm"><img src=http://www.food-info.net/images/button-poster.jpg border="0"></a></center><br><center><a href="http://www.fooddictionary.eu" target="_blank"><img src=http://www.food-info.net/images/button-dictionary.jpg border="0"></a></center><br>
+<center><a href="http://www.food-info.net/shop.htm"><img src=http://www.food-info.net/images/button-shop.jpg border="0"></a></center><br><center><h3>An initiative of :</h3><br><br>
+<h6><a href="http://www.mft.wur.nl/UK/Wageningen+City+of+Food/" target="_blank"><img src="http://www.food-info.net/images/WUR2.JPG" width="50" height="46" border="0"><br></a>Wageningen University</b></h6></p>                                 
+<br><br><center><a href="https://www.facebook.com/#!/pages/Food-Info-website/251543044978542" target="_blank"><img src="http://www.food-info.net/images/facebook.gif" border="0" align="middle"/></a></center><p>
+<br><br><center><a href="http://www.sitekeuring.net" target="_blank"><img src="http://award.sitekeuring.net/?id=1384" alt="Sitekeuring.NET Award" width="100"  border="0" /></a></center><p>
+               <br>
+				</td>
+				<td width="10" valign="top" border="0" cellpadding="0" cellspacing="0"> <img src="http://www.food-info.net/images/1.jpg" width="13" height="18">
+				</td>				<td bgcolor="white" valign="top" align="left" colspan="2">  <div align="left">
+    <p class="style2"><span class="style1 style1">	Food-Info.net&gt; E-numbers &gt;<a href="e100-200.htm"> E100-200</a>  </span></p>
+    <h1 align="center">E101: Riboflavin </h1>
+    <p><strong></strong></p>
+    <p><strong>E101 (i): Riboflavin <br>
+  E101 (ii): Riboflavin- 5-Sodium Phosphate (sometimes referred to as E106) </strong></p>
+    <p><strong>Vitamin B2, lactoflavin </strong></p>
+    <p><strong></strong></p>
+    <p><strong>Origin: <br>
+    </strong>Natural colour present in many foods such as milk, eggs, liver and vegetables. Commercially prepared from yeasts. It is also manufactured synthetically. </p>
+    <p><strong>Function &amp; characteristics: <br>
+    </strong>Yellow food colour. Not very soluble in water. </p>
+    <p><strong>Products: <br>
+    </strong>Many different products. </p>
+    <p><strong>Daily intake: <br>
+    </strong>Up to 0.5 mg/kg body weight. </p>
+    <p><strong>Side effects: <br>
+    </strong>No side effects known in the concentrations used in foods. </p>
+    <p><strong>Dietary restrictions: <br>
+    </strong>None; E101 can be consumed by all religious groups, vegans and vegetarians. Although it can be produced from milk, this is not done commercially.</p>
+    <h1 align="center">&nbsp;
+        </h1>
+    <h1 align="center">&nbsp;</h1>
+    </div></td>
+				<td width="10" valign="top" border="0" cellpadding="0" cellspacing="0"> <img src="http://www.food-info.net/images/2.jpg" width="13" height="18">
+<td bgcolor="009900" width="3"></td>
+<td bgcolor="009900" width="120" valign="top">
+    <br><table width="100%"  border="0" cellspacing="2" cellpadding="0"><tr><td bgcolor="#FFFFFF"><center><h6><a href="http://www.eurmscfood.nl" target="_blank"><img src="http://www.food-info.net/images/emdifos.jpg" width="75" border="0"><br>European Masters Degree in Food Studies - an Educational Journey </a></h6></center><br></td></tr></table><br><table width="100%"  border="0" cellspacing="2" cellpadding="0"><tr><td bgcolor="#FFFFFF"><center><h6><a href='http://www.mfs.wur.nl'><img src='http://www.food-info.net/images/mfs-law.jpg' alt="Master in Food Safety Law" border=0></a></h6></center><br></td></tr></table><br>
+    <br>    <script type="text/javascript"><!--
+google_ad_client = "pub-4879287902307022";
+//foodinfo
+google_ad_slot = "7652743608";
+google_ad_width = 120;
+google_ad_height = 600;
+//--></script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<p><center></center></p>
+</script>
+</td>			</tr>
+			<tr>
+				<td class="onder" width="122" bgcolor="#009900"><center><a href="#top"><img src="http://www.food-info.net/images/pijl.gif" width="41" height="21" border="0"></a></center>
+<h5><script language="JavaScript">
+//<!--
+document.write("Last Update: ");
+document.writeln(DocDate(),"");
+// -->
+</script><!-- --></h5></td>
+				<td width="10" align="center"></td>
+				<td class="onder" colspan="2">
+					 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2512814-1";
+urchinTracker();
+</script><font size=-1>Food-Info.net is an initiative of <a href="http://www.mft.wur.nl/UK/Wageningen+City+of+Food/">Wageningen University</a>, The Netherlands </font></h6>
+<center><div id="clustrmaps-widget"></div><script type="text/javascript">var _clustrmaps = {'url' : 'http://www.food-info.net', 'user' : 1078377, 'server' : '4', 'id' : 'clustrmaps-widget', 'version' : 1, 'date' : '2013-02-12', 'lang' : 'en', 'corners' : 'square' };(function (){ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'http://www4.clustrmaps.com/counter/map.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);})();</script><noscript><a href="http://www4.clustrmaps.com/user/b80107469"><img src="http://www4.clustrmaps.com/stats/maps-no_clusters/www.food-info.net-thumb.jpg" alt="Locations of visitors to this page" /></a></noscript></center><br>
+<a href="http://info.flagcounter.com/kk7S"><img src="http://s09.flagcounter.com/count/kk7S/bg_FFFFFF/txt_0B7512/border_CCCCCC/columns_8/maxflags_250/viewers_0/labels_0/pageviews_0/flags_0/" alt="Flag Counter" border="0"></a></h6>
+</td>
+			  <td valign="top" border="0" cellpadding="0" cellspacing="0">            
+			  <td bgcolor="009900"></td>
+			  <td bgcolor="009900" valign="top"><a href="http://www.ngw.nl"><img src="http://www.food-info.net/images/ngw.jpg" width="100" border="0"></a>
+		  </tr>
+		</table>
+	
+	</body>
+</html>
